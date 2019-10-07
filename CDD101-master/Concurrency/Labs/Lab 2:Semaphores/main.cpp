@@ -15,9 +15,11 @@ void taskOne(std::shared_ptr<Semaphore> theSemaphore, int delay){
   std::cout << "must ";
   std::cout << "print ";
   std::cout << "first"<<std::endl;
+  theSemaphore->Signal(); //signals critical section
 }
 /*! displays a message second*/
 void taskTwo(std::shared_ptr<Semaphore> theSemaphore){
+  theSemaphore->Wait(); //waits till thread 1 is complete
   std::cout <<"This ";
   std::cout << "will ";
   std::cout << "appear ";
