@@ -17,17 +17,12 @@ void taskOne(std::shared_ptr<Semaphore> theSemaphore, std::shared_ptr<Semaphore>
   //THIS IS THE RENDEZVOUS POINT!
   theMutex->Wait();
   counter++;
-  theMutex->Signal();
   if (counter==10){
     theSemaphore->Signal();
+  }
      theMutex->Signal();
      theSemaphore->Wait();
-  }
-   else{
-     theMutex->Signal();
-    theSemaphore->Wait();
-    theSemaphore->Signal();
-     }
+     theSemaphore->Signal();
   std::cout << "Task has left!"<<std::endl;
 }
 
