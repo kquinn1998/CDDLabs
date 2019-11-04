@@ -8,12 +8,15 @@
 
    Uses C++11 features such as mutex and condition variables to implement an example of a rendezvous for threads
 
+   Author: Kevin Quinn
+
 */
 /*! displays a message that is split in to 2 sections to show how a rendezvous works*/
 void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  secondSem, int delay){
   std::this_thread::sleep_for(std::chrono::seconds(delay));
   std::cout <<"Task One has arrived! "<< std::endl;
 
+  /*! if secondSem is waiting signal to run and tell firstSem to wait till secondSem is done*/
   secondSem->Signal();
   firstSem->Wait();
 
@@ -24,6 +27,7 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
   std::this_thread::sleep_for(std::chrono::seconds(delay));
   std::cout <<"Task Two has arrived "<<std::endl;
 
+  /*! if firstSem is waiting signal to run and tell secondSem to wait till firstSem is done*/
   firstSem->Signal();
   secondSem->Wait();
 
