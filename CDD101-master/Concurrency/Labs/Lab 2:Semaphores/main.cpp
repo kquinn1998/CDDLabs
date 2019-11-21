@@ -2,7 +2,7 @@
  *Project: CDD Labs
  *Author: Kevin Quinn C00216607
  *License: GNU
- *Description: Thread processing the second task must wait for thread executing the first task.
+ *Description: A group of labs demonstrating concurrency.
  */
 
 /*! \mainpage Lab 2 CDD Labs

@@ -1,17 +1,32 @@
+/*
+ *Project: CDD Labs
+ *Author: Kevin Quinn C00216607
+ *License: GNU
+ *Description: A group of labs demonstrating concurrency.
+ */
+
+/*! \mainpage Lab 3 CDD Labs
+ *
+ * \section Rondevoux
+ *
+ *This lab demonstrated rondevoux's.
+ *This is done by having the two threads sync up at a
+ *certain point before continuing.  
+ */
+
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
 
-/*! \class Signal
-    \brief An Implementation of a Rendezvous using Semaphores
-
-   Uses C++11 features such as mutex and condition variables to implement an example of a rendezvous for threads
-
-   Author: Kevin Quinn
-
+/*! \fn void taskOne(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay)
+    \brief IN this function the second sem will signal the first too run if it is waiting
+    \param firstSem the first initialisation of a semaphore
+    \param secondSem the second initialisation of a semaphore
+    \param delay used for sleep() function
+    \details This task runs first
 */
-/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+
 void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  secondSem, int delay){
   std::this_thread::sleep_for(std::chrono::seconds(delay));
   std::cout <<"Task One has arrived! "<< std::endl;
@@ -22,7 +37,13 @@ void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  sec
 
   std::cout << "Task One has left!"<<std::endl;
 }
-/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+/*! \fn void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay)
+    \brief IN this function the first sem will signal the second too run if it is waiting
+    \param firstSem the first initialisation of a semaphore
+    \param secondSem the second initialisation of a semaphore
+    \param delay used for sleep() function
+    \details This task runs first
+*/
 void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem, int delay){
   std::this_thread::sleep_for(std::chrono::seconds(delay));
   std::cout <<"Task Two has arrived "<<std::endl;
@@ -33,6 +54,11 @@ void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> sec
 
   std::cout << "Task Two has left "<<std::endl;
 }
+
+/*! \fn int main(void)
+    \brief Description of main functionality
+    \details This is the driver for the demonstration of a semaphore, it creates two threads and two semaphores and the runs the two threads
+*/
 
 int main(void){
   std::thread threadOne, threadTwo;
