@@ -5,15 +5,6 @@
  *Description: Thread processing the second task must wait for thread executing the first task.
  */
 
- /** @brief An implementation of a semaphore
- *
- * 
- * 
- * @return a message 
- * @param theSem shared semaphore object
- * @param delay represents the time for the thread to sleep.
- */
-
 /*! \mainpage Lab 2 CDD Labs
  *
  * \section Semaphores

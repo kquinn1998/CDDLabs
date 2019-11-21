@@ -1,8 +1,6 @@
-#Joseph Kehoe 13/9/2017
-#First simple Makefile
-#Used to contain commands to compile projects
-#Equivalent(?) to a project file in VStudio -- only better!
-#See http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ for info.
+#Project: CDD Labs
+#Author: Kevin Quinn C00216607
+#Date: 19/11/19
 
 
 CC=g++
