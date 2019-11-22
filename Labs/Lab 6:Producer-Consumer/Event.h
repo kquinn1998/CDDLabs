@@ -13,6 +13,9 @@
  * consumed by a thread.
  */
 
+#pragma once
+//no matter how many time it is included, it will only compile it once. To avoid errors.
+
 class Event{
  private:
   char myChar;
