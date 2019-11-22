@@ -1,58 +1,23 @@
-/* Event.h --- 
- * 
- * Filename: Event.h
- * Description: 
- * Author: Joseph
- * Maintainer: 
- * Created: Tue Jan  8 12:30:05 2019 (+0000)
- * Version: 
- * Package-Requires: ()
- * Last-Updated: Tue Jan  8 12:30:14 2019 (+0000)
- *           By: Joseph
- *     Update #: 1
- * URL: 
- * Doc URL: 
- * Keywords: 
- * Compatibility: 
- * 
+/*
+ *Project: CDD Labs
+ *Author: Kevin Quinn C00216607
+ *License: GNU
+ *Description: A group of labs demonstrating concurrency.
  */
 
-/* Commentary: 
- * 
- * 
- * 
+/*! \mainpage Lab 6 CDD Labs
+ *
+ * \section Event Header
+ *
+ * This Header is used to create an event / task, which can be added to a buffer and then
+ * consumed by a thread.
  */
-
-/* Change Log:
- * 
- * 
- */
-
-/* This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or (at
- * your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/* Code: */
-
-#pragma once
-//no matter how many time it is included, it will only compile it once. To avoid errors.
 
 class Event{
  private:
-  char eric;
+  char myChar;
  public:
   Event();
   bool consume(); //true if consumes, false if something goes wrong  
 };
 
-/* Event.h ends here */

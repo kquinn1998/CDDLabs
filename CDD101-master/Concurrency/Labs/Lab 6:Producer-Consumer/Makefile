@@ -1,8 +1,5 @@
-#Joseph Kehoe 13/9/2017
-#First simple Makefile
-#Used to contain commands to compile projects
-#Equivalent(?) to a project file in VStudio -- only better!
-#See http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ for info.
+#Kevin Quinn C00216607
+#19/11/19
 
 
 CC=g++
@@ -11,8 +8,8 @@ CFLAGS= -std=c++17 -pthread -g -Wall -Wextra
 %.o: %.cpp
 		$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
 
-ALL: main.o Semaphore.o Event.o SafeBuffer.o Barrier.o
-		$(CC) -o run main.o Semaphore.o Event.o SafeBuffer.o Barrier.o $(CFLAGS) $(DEBUGFLAGS)
+ALL: main.o Semaphore.o Event.o SafeBuffer.o
+		$(CC) -o run main.o Semaphore.o Event.o SafeBuffer.o $(CFLAGS) $(DEBUGFLAGS)
 	
 DEBUG: DEBUGFLAGS = -DDEBUG
 DEBUG: ALL

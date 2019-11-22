@@ -1,3 +1,9 @@
+/*
+ *Project: CDD Labs
+ *Author: Kevin Quinn C00216607
+ *License: GNU
+ *Description: A group of labs demonstrating concurrency.
+ */
 #ifndef SEMAPHORE_H
 #define SEMAPHORE_H 
 #include <mutex>

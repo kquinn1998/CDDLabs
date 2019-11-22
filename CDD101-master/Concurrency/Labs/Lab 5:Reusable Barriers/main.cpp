@@ -1,3 +1,22 @@
+/*
+ *Project: CDD Labs
+ *Author: Kevin Quinn C00216607
+ *License: GNU
+ *Description: A group of labs demonstrating concurrency.
+ */
+
+/*! \mainpage Lab 5 CDD Labs
+ *
+ * \section Barriers
+ *
+ * This lab employs the use of reusable barriers to show how it can be used
+ * to aid concurrency by making one section of threads run first then the second.
+ * 
+ * With the output we will see that all the A's will be printed first with an integer attached,
+ * then all the B's with the integer attached, the for loop then incremenets and the same happens
+ * again with a new integer.
+ */
+
 #include "Barrier.h"
 #include <iostream>
 #include <thread>
@@ -7,20 +26,19 @@
 static const int num_threads = 100;
 int sharedVariable=0;
 
-
-/*! \fn barrierTask
-    \brief An example of using a reusable barrier
+/*! \fn void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops)
+    \brief In this function we use a passed in Barrier and an integer variable to control the amount of interation occurs.
+    \param theBarrier this is the implementation of the barrier class which which will control the output of the threads
+    \param numLoops used to decide with the for loop how many times it will increment
+    \details This function demonstrates how you can use a barrier to control the output of multiple threads in stages.
 */
-/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+
 void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops){
 
   for(int i=0;i<numLoops;++i){
-    //Do first bit of task
     theBarrier->wait();
     std::cout << "A"<< i;
-    //Barrier
     theBarrier->wait();
-    //Do second half of task
     std::cout<< "B" << i;
   }
   
@@ -31,12 +49,12 @@ void barrierTask(std::shared_ptr<Barrier> theBarrier, int numLoops){
 int main(void){
   std::vector<std::thread> vt(num_threads);
   std::shared_ptr<Barrier> aBarrier( new Barrier(num_threads));
-  /**< Launch the threads  */
+
   int i=0;
   for(std::thread& t: vt){
     t=std::thread(barrierTask,aBarrier,10);
   }
-  /**< Join the threads with the main thread */
+  
   for (auto& v :vt){
       v.join();
   }

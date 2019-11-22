@@ -1,3 +1,9 @@
+/*
+ *Project: CDD Labs
+ *Author: Kevin Quinn C00216607
+ *License: GNU
+ *Description: A group of labs demonstrating concurrency.
+ */
 #include "Semaphore.h"
 /*! \class Semaphore
     \brief A Semaphore Implementation

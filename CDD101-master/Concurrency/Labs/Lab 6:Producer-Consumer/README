@@ -1,10 +1,10 @@
-The README file is a text file that explains what a project is.
-It should contain information on
+Labs for CDD
 
-1. Project Licence
-2. Authors of Project
-3. How to install project
-4. List of any required Libraries, platform issues, etc.
-5. TO DO section listing items that need to be completed (errors, missing features etc.)
-6. List of files and what they contain
-7. Any other relevent information
+Author:     Kevin Quinn C00216607.
+Licenece:   GNU.
+
+Details:    This repo holds the labs completed for concurrent device development.
+
+To Run:     1) navigate to this directory in the terminal.
+            2) type make to run makefile to compile software.
+            3) type ./run to run software.

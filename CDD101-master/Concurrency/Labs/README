@@ -1,0 +1,17 @@
+Labs for CDD
+
+Author:     Kevin Quinn C00216607.
+Licenece:   GNU.
+
+Details:    This repo holds the labs completed for concurrent device development.
+
+To Run:     1) navigate to this directory in the terminal.
+            2) type make to run makefile to compile software.
+            3) type ./run to run software.
+
+Lab 1:      Intro to tools.
+Lab 2:      Intro to semaphores.
+Lab 3:      Intro to rendezvous.
+Lab 4:      Intro to mutual exclusion.
+Lab 5:      Intro to reusable barriers.
+Lab 6:      Intro to Producers and Consumers.
