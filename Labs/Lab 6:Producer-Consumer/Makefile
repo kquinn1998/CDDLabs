@@ -16,3 +16,5 @@ DEBUG: ALL
 
 CLEAN:
 	rm *.o
+DOC:
+	doxygen
