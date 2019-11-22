@@ -15,66 +15,80 @@
  */
 
 #include "SafeBuffer.h"
-#include "Event.h"
 #include <iostream>
+#include <chrono>
 #include <thread>
-#include <vector>
 
 
-static const int num_threads = 100;
-const int size=20;
+int characterCountBuffer[26] = {0};
 
 
 /*! \fn void producer(std::shared_ptr<SafeBuffer> theBuffer, int numLoops)
     \brief In this function we use a passed in Buffer and an integer variable to control the amount of tasks to be added to the buffer.
+           A random char is added to the buffer each time
     \param theBuffer this is the implementation of the SafeBuffer which tasks are stored onto by producers and taken from by consumers
     \param numLoops used to decide with the for loop how many times it will increment
     \details This function creates an event in which it places on to the buffer.
 */
-void producer(std::shared_ptr<SafeBuffer> theBuffer, int numLoops){
-
-  for(int i=0;i<numLoops;++i){
-    Event e;
-    theBuffer->push(e);
-  }
+void ProducerMethod(std::shared_ptr<SafeBuffer> theBuffer, int numOfLoops) {
+  char c;
+  int i = 0;
+  do {
+    std::this_thread::sleep_for(std::chrono::milliseconds(std::rand()%1000));
+    c =  std::rand() % 26 + 97;
+    if ( ++i == numOfLoops ) {
+      c = 'X';
+    }
+    theBuffer->Add(c);
+    std::cout << "Producing " << c << std::endl;
+  } while ( c != 'X' );
 }
 
 /*! \fn void consumer(std::shared_ptr<SafeBuffer> theBuffer, int numLoops)
-    \brief In this function we use a passed in Buffer and an integer variable to control the amount of tasks to be taken from the buffer and processed.
+    \brief In this function we use a passed in Buffer and an integer variable to control the amount of tasks to be taken from the buffer 
+           and then we count the occurence of the charachter.
     \param theBuffer this is the implementation of the SafeBuffer which tasks are stored onto by producers and taken from by consumers
-    \param numLoops used to decide with the for loop how many times it will increment
     \details This function takes an event from the buffer and processes it.
 */
-void consumer(std::shared_ptr<SafeBuffer> theBuffer, int numLoops){
+void ConsumerMethod(std::shared_ptr<SafeBuffer> theBuffer) {
+  char c;
+  do {
+    c = theBuffer->Remove();
+    std::cout << "Consuming " << c << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(std::rand()%1000));
+    characterCountBuffer[c]++;
+  } while ( c != 'X');
+}
 
-  for(int i=0;i<numLoops;++i){
-    Event e= theBuffer->pop();
-    e.consume();
+/*! \fn void PrintArray()
+    \brief This is used to print out the occurence of each charachter.
+*/
+void PrintArray() {
+  for ( char i = 97; i < 123; ++i ) {
+    std::cout << i << " " << characterCountBuffer[i] << std::endl;
   }
 }
 
-int main(void){
+int main(void) {
+  int numOfLoops;
+  std::shared_ptr<SafeBuffer> theBuffer(new SafeBuffer);
+  std::thread producer[10];
+  std::thread consumer[10];
 
-  std::vector<std::thread> producers(num_threads);
-  std::vector<std::thread> consumers(num_threads);
-  std::shared_ptr<SafeBuffer> aBuffer( new SafeBuffer());
-  /**< Launch the threads  */
-  for(std::thread& p: producers){
-    p=std::thread(producer,aBuffer,10);
+  std::cout << "How many characters do we add?" << std::endl;
+  std::cin >> numOfLoops;
+
+  for ( int i = 0; i < 10; i++ ) {
+    producer[i] = std::thread(ProducerMethod, theBuffer, numOfLoops);
+    consumer[i] = std::thread(ConsumerMethod, theBuffer);
   }
 
-  for(std::thread& c: consumers){
-    c=std::thread(consumer,aBuffer,10);
+  for ( int i = 0; i < 10; ++i ) {
+    producer[i].join();
+    consumer[i].join();
   }
 
-  /**< Join the threads with the main thread */
-  for (auto& p :producers){
-      p.join();
-  }
-  for (auto& c :consumers){
-      c.join();
-  }
-
-  std::cout  << std::endl;
+  PrintArray();
+  std::cout << "All Threads Finished, back in main"<< std::endl;
   return 0;
 }

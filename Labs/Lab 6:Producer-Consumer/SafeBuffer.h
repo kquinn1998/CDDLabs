@@ -13,19 +13,19 @@
  * whilst implementing semaphores to control task delegation between threads.
  */
 
-#include "Event.h"
-#include <vector>
+
+#include <mutex>
 #include "Semaphore.h"
+#include <queue>
 
 class SafeBuffer {
-
-private:
-  std::vector<Event> data;
+ public:
   std::shared_ptr<Semaphore> mutex;
-  std::shared_ptr<Semaphore> sem1;
-
-public:
+  std::shared_ptr<Semaphore> items;
+  std::shared_ptr<Semaphore> spaces;
+  std::queue<char> safeBuffer;
   SafeBuffer();
-  int push(Event);
-  Event pop();
+  void Add(char);
+  char Remove();
 };
+

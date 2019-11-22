@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('class_safe_buffer.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_safe_buffer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SafeBuffer Class Reference</div>  </div>
@@ -93,10 +94,23 @@ $(document).ready(function(){initNavTree('class_safe_buffer.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af835d8d08c4dcd3326f21ae2e9988699"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#af835d8d08c4dcd3326f21ae2e9988699">SafeBuffer</a> ()</td></tr>
 <tr class="separator:af835d8d08c4dcd3326f21ae2e9988699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3ed0799ec2e84c97e36b22c83f7abf5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#ac3ed0799ec2e84c97e36b22c83f7abf5">push</a> (<a class="el" href="class_event.html">Event</a>)</td></tr>
-<tr class="separator:ac3ed0799ec2e84c97e36b22c83f7abf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90a33fca4d838f7c0eef6e8557f3c281"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_event.html">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#a90a33fca4d838f7c0eef6e8557f3c281">pop</a> ()</td></tr>
-<tr class="separator:a90a33fca4d838f7c0eef6e8557f3c281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11cc1330c953304b540355fad3ba0b0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#a11cc1330c953304b540355fad3ba0b0e">Add</a> (char)</td></tr>
+<tr class="memdesc:a11cc1330c953304b540355fad3ba0b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">With this function we begin by checking if the buffer is full then we mutex it to make it safe the add the char to the buffer.  <a href="#a11cc1330c953304b540355fad3ba0b0e">More...</a><br /></td></tr>
+<tr class="separator:a11cc1330c953304b540355fad3ba0b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a8dc1f39f036cad435bb388d2693c66"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#a7a8dc1f39f036cad435bb388d2693c66">Remove</a> ()</td></tr>
+<tr class="memdesc:a7a8dc1f39f036cad435bb388d2693c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">This first checks if there are items to be consumed, it then locks the mutex and removes the item.  <a href="#a7a8dc1f39f036cad435bb388d2693c66">More...</a><br /></td></tr>
+<tr class="separator:a7a8dc1f39f036cad435bb388d2693c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a7f90950b182359904348ff978ebb96c6"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_semaphore.html">Semaphore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#a7f90950b182359904348ff978ebb96c6">mutex</a></td></tr>
+<tr class="separator:a7f90950b182359904348ff978ebb96c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab374b9839a583473e1ec8938715a8e7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_semaphore.html">Semaphore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#aab374b9839a583473e1ec8938715a8e7">items</a></td></tr>
+<tr class="separator:aab374b9839a583473e1ec8938715a8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8de2bc2e0f6672f448ef0095faacf8c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_semaphore.html">Semaphore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#aa8de2bc2e0f6672f448ef0095faacf8c">spaces</a></td></tr>
+<tr class="separator:aa8de2bc2e0f6672f448ef0095faacf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db738cc1b4be3eeba47f322008a2c3e"><td class="memItemLeft" align="right" valign="top">std::queue&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_safe_buffer.html#a8db738cc1b4be3eeba47f322008a2c3e">safeBuffer</a></td></tr>
+<tr class="separator:a8db738cc1b4be3eeba47f322008a2c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af835d8d08c4dcd3326f21ae2e9988699"></a>
@@ -117,14 +131,40 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a90a33fca4d838f7c0eef6e8557f3c281"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90a33fca4d838f7c0eef6e8557f3c281">&#9670;&nbsp;</a></span>pop()</h2>
+<a id="a11cc1330c953304b540355fad3ba0b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11cc1330c953304b540355fad3ba0b0e">&#9670;&nbsp;</a></span>Add()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_event.html">Event</a> SafeBuffer::pop </td>
+          <td class="memname">void SafeBuffer::Add </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>With this function we begin by checking if the buffer is full then we mutex it to make it safe the add the char to the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>this is the char to be added to the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7a8dc1f39f036cad435bb388d2693c66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a8dc1f39f036cad435bb388d2693c66">&#9670;&nbsp;</a></span>Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char SafeBuffer::Remove </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -132,20 +172,67 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This first checks if there are items to be consumed, it then locks the mutex and removes the item. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>this is the char to be added to the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ac3ed0799ec2e84c97e36b22c83f7abf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3ed0799ec2e84c97e36b22c83f7abf5">&#9670;&nbsp;</a></span>push()</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aab374b9839a583473e1ec8938715a8e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab374b9839a583473e1ec8938715a8e7">&#9670;&nbsp;</a></span>items</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int SafeBuffer::push </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_event.html">Event</a>&#160;</td>
-          <td class="paramname"><em>e</em></td><td>)</td>
-          <td></td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_semaphore.html">Semaphore</a>&gt; SafeBuffer::items</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f90950b182359904348ff978ebb96c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f90950b182359904348ff978ebb96c6">&#9670;&nbsp;</a></span>mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_semaphore.html">Semaphore</a>&gt; SafeBuffer::mutex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8db738cc1b4be3eeba47f322008a2c3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8db738cc1b4be3eeba47f322008a2c3e">&#9670;&nbsp;</a></span>safeBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;char&gt; SafeBuffer::safeBuffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8de2bc2e0f6672f448ef0095faacf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8de2bc2e0f6672f448ef0095faacf8c">&#9670;&nbsp;</a></span>spaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_semaphore.html">Semaphore</a>&gt; SafeBuffer::spaces</td>
         </tr>
       </table>
 </div><div class="memdoc">

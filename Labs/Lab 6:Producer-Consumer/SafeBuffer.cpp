@@ -14,29 +14,38 @@
  */
 
 #include "SafeBuffer.h"
-#include "Event.h"
-#include <vector>
-#include "Semaphore.h"
+#include <iostream>
 
-SafeBuffer::SafeBuffer(){
+SafeBuffer::SafeBuffer() {
+  items = std::make_shared<Semaphore>(0);
   mutex = std::make_shared<Semaphore>(1);
-  sem1=std::make_shared<Semaphore>(0);
+  spaces = std::make_shared<Semaphore>(100);
 }
 
-int SafeBuffer::push(Event e){
+/*! \fn void SafeBuffer::Add(char c)
+    \brief With this function we begin by checking if the buffer is full then we mutex it to make it safe the add the char to the buffer
+    \param c this is the char to be added to the buffer.
+*/
+
+void SafeBuffer::Add(char c) {
+  spaces->Wait();
   mutex->Wait();
-  data.push_back(e);
-  int s = data.size();
-  sem1->Signal();
+  safeBuffer.push(c);
   mutex->Signal();
-  return s;
+  items->Signal();
 }
 
-Event SafeBuffer::pop(){
-  sem1->Wait();
+/*! \fn void SafeBuffer::Remove()
+    \brief This first checks if there are items to be consumed, it then locks the mutex and removes the item.
+    \param c this is the char to be added to the buffer.
+*/
+char SafeBuffer::Remove() {
+  char c;
+  items->Wait();
   mutex->Wait();
-  Event e = data.back();
-  data.pop_back();
+  c = safeBuffer.front();
+  safeBuffer.pop();
   mutex->Signal();
-  return e;
+  spaces->Signal();
+  return c;
 }

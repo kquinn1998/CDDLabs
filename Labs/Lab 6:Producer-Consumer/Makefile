@@ -8,8 +8,8 @@ CFLAGS= -std=c++17 -pthread -g -Wall -Wextra
 %.o: %.cpp
 		$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
 
-ALL: main.o Semaphore.o Event.o SafeBuffer.o
-		$(CC) -o run main.o Semaphore.o Event.o SafeBuffer.o $(CFLAGS) $(DEBUGFLAGS)
+ALL: main.o Semaphore.o SafeBuffer.o
+		$(CC) -o run main.o Semaphore.o SafeBuffer.o $(CFLAGS) $(DEBUGFLAGS)
 	
 DEBUG: DEBUGFLAGS = -DDEBUG
 DEBUG: ALL

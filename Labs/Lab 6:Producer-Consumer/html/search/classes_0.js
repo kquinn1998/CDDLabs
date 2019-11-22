@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['event',['Event',['../class_event.html',1,'']]]
+  ['safebuffer',['SafeBuffer',['../class_safe_buffer.html',1,'']]],
+  ['semaphore',['Semaphore',['../class_semaphore.html',1,'']]]
 ];

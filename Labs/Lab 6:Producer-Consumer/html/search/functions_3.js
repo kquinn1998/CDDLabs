@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pop',['pop',['../class_safe_buffer.html#a90a33fca4d838f7c0eef6e8557f3c281',1,'SafeBuffer']]],
-  ['producer',['producer',['../main_8cpp.html#a3d0719b4bcba12452a2f7b9b40c6c6d9',1,'main.cpp']]],
-  ['push',['push',['../class_safe_buffer.html#ac3ed0799ec2e84c97e36b22c83f7abf5',1,'SafeBuffer']]]
+  ['printarray',['PrintArray',['../main_8cpp.html#a592b091d8e3b080475a6b7e2629b100f',1,'main.cpp']]],
+  ['producermethod',['ProducerMethod',['../main_8cpp.html#aae0dd4971990361a4d0a23555e13ae4c',1,'main.cpp']]]
 ];
